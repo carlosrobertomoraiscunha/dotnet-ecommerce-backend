@@ -5,6 +5,6 @@ Esse é um projeto de um ecommerce simples feito com a finalidade de colocar em 
 Entre as tecnologias e ferramentas utilizadas nesse projeto, estão:
 
 - Visual Studio 2019;
-- Azure SQL Database;
+- SQL Server;
 - Linguagem C#;
 - Framework ASP .NET Core.
