@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	  <UserSecretsId>3680cd5d-60d7-4e52-9ca7-34510699b7a6</UserSecretsId>
+	  <ApplicationIcon />
+	  <Win32Resource />
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.16" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Repository\Repository.csproj" />
+		<ProjectReference Include="..\Service\Service.csproj" />
+	</ItemGroup>
+	
+</Project>
