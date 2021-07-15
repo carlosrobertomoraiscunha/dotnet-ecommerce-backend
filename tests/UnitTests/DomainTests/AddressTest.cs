@@ -1,4 +1,5 @@
 ﻿using CommonTests.Fixtures;
+using Domain.Entities;
 using FluentAssertions;
 using Xunit;
 
@@ -13,6 +14,8 @@ namespace UnitTests.DomainTests
         private readonly UserFixture _userFixture;
         private readonly ImageFixture _imageFixture;
 
+        private readonly User _validUser;
+
         public AddressTest(AddressFixture addressFixture,
                            UserFixture userFixture,
                            ImageFixture imageFixture)
@@ -20,6 +23,9 @@ namespace UnitTests.DomainTests
             _addressFixture = addressFixture;
             _userFixture = userFixture;
             _imageFixture = imageFixture;
+
+            _validUser = userFixture.ValidUser();
+            _validUser.Photo = imageFixture.ValidImage();
         }
 
         [Fact]
@@ -27,8 +33,7 @@ namespace UnitTests.DomainTests
         public void Address_Okay_ValidAddress()
         {
             var address = _addressFixture.ValidAddress();
-            address.User = _userFixture.ValidUser();
-            address.User.Photo = _imageFixture.ValidImage();
+            address.User = _validUser;
 
             var isValid = address.IsValid();
 
@@ -41,8 +46,7 @@ namespace UnitTests.DomainTests
         public void Address_Empty_InvalidAddress()
         {
             var address = _addressFixture.EmptyAddress();
-            address.User = _userFixture.ValidUser();
-            address.User.Photo = _imageFixture.ValidImage();
+            address.User = _validUser;
 
             var isValid = address.IsValid();
 
@@ -55,8 +59,7 @@ namespace UnitTests.DomainTests
         public void Address_MaxLength_InvalidAddress()
         {
             var address = _addressFixture.MaxLengthAddress();
-            address.User = _userFixture.ValidUser();
-            address.User.Photo = _imageFixture.ValidImage();
+            address.User = _validUser;
 
             var isValid = address.IsValid();
 

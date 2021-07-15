@@ -1,6 +1,8 @@
 ﻿using Bogus;
 using Domain.Entities;
 using Domain.Enums;
+using Domain.ViewModels.User;
+using System;
 using Xunit;
 
 namespace CommonTests.Fixtures
@@ -49,6 +51,29 @@ namespace CommonTests.Fixtures
                 Password = f.Lorem.Letter(LENGTH_FIELDS),
                 Phone = f.Lorem.Letter(LENGTH_PHONE)
             });
+
+            return faker.Generate();
+        }
+
+        public UserSignUpViewModel ValidUserSignUpViewModel()
+        {
+            var faker = new Faker<UserSignUpViewModel>("pt_BR");
+
+            faker.RuleFor(u => u.Name, (f, u) => f.Name.FullName());
+            faker.RuleFor(u => u.Password, (f, u) => f.Internet.Password());
+            faker.RuleFor(u => u.Email, (f, u) => f.Internet.ExampleEmail(u.Name.ToLower()));
+            faker.RuleFor(u => u.Phone, (f, u) => f.Phone.PhoneNumber("(##) #####-####"));
+
+            return faker.Generate();
+        }
+
+        public UserTokenViewModel ValidUserTokenViewModel()
+        {
+            var faker = new Faker<UserTokenViewModel>("pt_BR");
+
+            faker.RuleFor(u => u.Name, (f, u) => f.Name.FullName());
+            faker.RuleFor(u => u.Email, (f, u) => f.Internet.ExampleEmail(u.Name.ToLower()));
+            faker.RuleFor(u => u.Phone, (f, u) => f.Phone.PhoneNumber("(##) #####-####"));
 
             return faker.Generate();
         }
