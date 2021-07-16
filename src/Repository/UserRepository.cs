@@ -27,6 +27,9 @@ namespace Repository
             var user = _ecommerceDbContext.Users.Include(u => u.Photo)
                                                 .FirstOrDefault(u => u.Email == email);
 
+            if (user == null)
+                throw new EntityNotFoundException($"Usuário com email {email} não encontrado");
+
             return user;
         }
 

@@ -17,8 +17,7 @@ namespace Service
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository,
-                           IMapper mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -60,7 +59,7 @@ namespace Service
 
         public UserOutputViewModel GetLoggedUser(string token)
         {
-            User user = GetUserByToken(token);
+            var user = GetUserByToken(token);
 
             return _mapper.Map<User, UserOutputViewModel>(user);
         }
@@ -76,7 +75,6 @@ namespace Service
             userUpdated.Id = userToUpdate.Id;
             userUpdated.Photo.Id = userToUpdate.Photo.Id;
             userUpdated.PhotoId = userToUpdate.PhotoId;
-            userUpdated.Email = userToUpdate.Email;
             userUpdated.Password = PasswordEncoder.EncodePasswordToBase64(userUpdated.Password);
 
             _userRepository.Update(userUpdated);

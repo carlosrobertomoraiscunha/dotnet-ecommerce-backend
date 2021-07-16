@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Exceptions;
 using Domain.Interfaces.Repository;
 using Repository.Context;
 using System.Collections.Generic;
@@ -17,7 +18,12 @@ namespace Repository
 
         public Address FindById(long id)
         {
-            return _ecommerceDbContext.Addresses.Find(id);
+            var address = _ecommerceDbContext.Addresses.Find(id);
+
+            if (address == null)
+                throw new EntityNotFoundException($"Endereço com id {id} não encontrado");
+
+            return address;
         }
 
         public ICollection<Address> List()
@@ -39,7 +45,8 @@ namespace Repository
 
         public void Update(Address address)
         {
-            _ecommerceDbContext.Addresses.Update(address);
+            _ecommerceDbContext.Entry(_ecommerceDbContext.Addresses.First(a => a.Id == address.Id)).CurrentValues
+                               .SetValues(address);
             _ecommerceDbContext.SaveChanges();
         }
     }

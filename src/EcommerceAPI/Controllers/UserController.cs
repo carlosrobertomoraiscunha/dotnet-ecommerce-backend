@@ -193,7 +193,6 @@ namespace EcommerceAPI.Controllers
         /// <response code="200">Se o usuário foi atualizado com sucesso</response>
         /// <response code="400">Se houver algum campo preenchido incorretamente</response>
         /// <response code="401">Se o token de acesso for inválido</response>
-        /// <response code="409">Se o email do usuário já existir</response>
         [Authorize]
         [HttpPut]
         [Consumes(MediaTypeNames.Application.Json)]
@@ -201,7 +200,6 @@ namespace EcommerceAPI.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(UserOutputViewModel))]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest, type: typeof(ErrorViewModel))]
         [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized, type: typeof(string))]
-        [ProducesResponseType(statusCode: StatusCodes.Status409Conflict, type: typeof(string))]
         public IActionResult UpdateLoggedUser([FromBody] UserUpdateViewModel user)
         {
             try
@@ -222,10 +220,6 @@ namespace EcommerceAPI.Controllers
                 };
 
                 return BadRequest(errors);
-            }
-            catch (EntityAlreadyExistsException ex)
-            {
-                return Conflict(ex.Message);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace CommonTests.Fixtures
             {
                 using (WebClient client = new WebClient())
                 {
-                    var imageContent = client.DownloadData(f.Image.PicsumUrl());
+                    var imageContent = client.DownloadData(f.Image.PicsumUrl(imageId: 1));
 
                     return imageContent;
                 }
@@ -39,7 +39,7 @@ namespace CommonTests.Fixtures
             {
                 using (WebClient client = new WebClient())
                 {
-                    var imageContent = client.DownloadString(f.Image.PicsumUrl());
+                    var imageContent = client.DownloadString(f.Image.PicsumUrl(imageId: 1));
 
                     return imageContent;
                 }

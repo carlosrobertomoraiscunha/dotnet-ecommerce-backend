@@ -1,5 +1,4 @@
-﻿using Domain.ViewModels;
-using Domain.ViewModels.User;
+﻿using Domain.ViewModels.User;
 
 namespace Domain.Interfaces.Service
 {

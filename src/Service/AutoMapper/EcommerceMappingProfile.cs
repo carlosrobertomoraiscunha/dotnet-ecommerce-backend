@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
-using Domain.ViewModels;
+using Domain.ViewModels.Address;
 using Domain.ViewModels.Image;
 using Domain.ViewModels.User;
 using System;
@@ -15,6 +15,8 @@ namespace Service.AutoMapper
             CreateMap<User, UserOutputViewModel>();
             CreateMap<UserLogInViewModel, User>();
             CreateMap<User, UserTokenViewModel>();
+            CreateMap<UserUpdateViewModel, User>();
+
             CreateMap<ImageViewModel, Image>()
                 .ForMember(i => i.Content, map =>
                 {
@@ -25,7 +27,9 @@ namespace Service.AutoMapper
                 {
                     map.MapFrom(i => Convert.ToBase64String(i.Content));
                 });
-            CreateMap<UserUpdateViewModel, User>();
+
+            CreateMap<AddressViewModel, Address>();
+            CreateMap<Address, AddressOutputViewModel>();
         }
     }
 }

@@ -25,8 +25,6 @@ namespace Repository.Mapping
 
             builder.Property(a => a.Cep)
                 .IsRequired()
-                .HasMaxLength(AddressValidation.LENGTH_CEP)
-                .IsFixedLength()
                 .HasColumnName("cep");
 
             builder.Property(a => a.City)
