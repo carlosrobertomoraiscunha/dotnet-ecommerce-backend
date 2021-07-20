@@ -60,7 +60,7 @@ namespace EcommerceAPI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpGet("users/{id}")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ICollection<UserOutputViewModel>))]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(UserOutputViewModel))]
         [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound, type: typeof(string))]
         public IActionResult GetUserById(long id)
@@ -92,7 +92,6 @@ namespace EcommerceAPI.Controllers
         /// <response code="404">Se não houver usuário com o id informado</response>
         [Authorize(Roles = "Admin")]
         [HttpDelete("users/{id}")]
-        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
         [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound, type: typeof(string))]

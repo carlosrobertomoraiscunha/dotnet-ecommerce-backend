@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
@@ -34,7 +33,7 @@ namespace Domain.Entities
 
             RuleFor(p => p.Price)
                 .GreaterThan(decimal.Zero).WithMessage("O preço do produto é inválido");
-            
+
             RuleFor(p => p.Description)
                 .NotEmpty().WithMessage("A descrição do produto é obrigatória")
                 .MaximumLength(MAX_LENGTH_DESCRIPTION).WithMessage($"A descrição do produto deve possuir no máximo {MAX_LENGTH_DESCRIPTION} caracteres");

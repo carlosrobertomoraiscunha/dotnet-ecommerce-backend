@@ -9,7 +9,7 @@ namespace Domain.ViewModels.User
         public long Id { get; set; }
 
         [JsonPropertyName("foto")]
-        public ImageViewModel Photo { get; set; }
+        public ImageOutputViewModel Photo { get; set; }
 
         [JsonPropertyName("nome")]
         public string Name { get; set; }

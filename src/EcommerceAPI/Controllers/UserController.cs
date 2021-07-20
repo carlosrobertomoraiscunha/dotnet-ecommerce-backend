@@ -154,7 +154,6 @@ namespace EcommerceAPI.Controllers
         /// <response code="401">Se o token de acesso for inválido</response>
         [Authorize]
         [HttpDelete]
-        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
         [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized, type: typeof(string))]
         public IActionResult RemoveLoggedUser()

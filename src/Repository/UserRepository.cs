@@ -36,7 +36,7 @@ namespace Repository
         public User FindById(long id)
         {
             var user = _ecommerceDbContext.Users.Include(u => u.Photo)
-                                            .FirstOrDefault(u => u.Id == id);
+                                                .FirstOrDefault(u => u.Id == id);
 
             if(user == null)
                 throw new EntityNotFoundException($"Usuário com id {id} não encontrado");

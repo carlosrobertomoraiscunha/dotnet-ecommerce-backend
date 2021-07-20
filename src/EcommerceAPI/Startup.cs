@@ -59,7 +59,8 @@ namespace EcommerceAPI
 
             services.AddScoped<IUserService, UserService>()
                     .AddScoped<IAdminService, AdminService>()
-                    .AddScoped<IAddressService, AddressService>();
+                    .AddScoped<IAddressService, AddressService>()
+                    .AddScoped<IProductService, ProductService>();
 
             services.AddSwaggerGen(options =>
             {

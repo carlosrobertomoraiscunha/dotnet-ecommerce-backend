@@ -2,7 +2,6 @@
 using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.IO;
 
 namespace Repository.Mapping
 {
@@ -49,11 +48,22 @@ namespace Repository.Mapping
                 .HasConversion<string>()
                 .HasColumnName("funcao")
                 .HasDefaultValue(Role.Customer);
-            
+
             builder.Ignore(u => u.ValidationResult);
             builder.Ignore(u => u.ErrorMessages);
 
             builder.ToTable("Usuarios");
+
+            builder.HasData(new User
+            {
+                Id = 1,
+                Email = "carlos@gmail.com",
+                Name = "Carlos Roberto",
+                Password = "c2VuaGExMjM=",
+                Phone = "(51) 98413-9261",
+                Role = Role.Admin,
+                PhotoId = 1
+            });
         }
     }
 }

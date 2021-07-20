@@ -58,7 +58,7 @@ namespace UnitTests.ControllerTests
             _validUserSignUpViewModel.Photo = imageFixture.ValidImageViewModel();
 
             _validUserTokenViewModel = userFixture.ValidUserTokenViewModel();
-            _validUserTokenViewModel.Photo = imageFixture.ValidImageViewModel();
+            _validUserTokenViewModel.Photo = imageFixture.ValidImageOutputViewModel();
 
             _mapper.Setup(m => m.Map<UserSignUpViewModel, User>(_validUserSignUpViewModel))
                    .Returns(_validUser);

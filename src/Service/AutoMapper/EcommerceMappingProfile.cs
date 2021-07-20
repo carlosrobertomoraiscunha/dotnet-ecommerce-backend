@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.ViewModels.Address;
 using Domain.ViewModels.Image;
+using Domain.ViewModels.Product;
 using Domain.ViewModels.User;
 using System;
 
@@ -22,7 +23,7 @@ namespace Service.AutoMapper
                 {
                     map.MapFrom(ivm => Convert.FromBase64String(ivm.Content));
                 });
-            CreateMap<Image, ImageViewModel>()
+            CreateMap<Image, ImageOutputViewModel>()
                 .ForMember(ivm => ivm.Content, map =>
                 {
                     map.MapFrom(i => Convert.ToBase64String(i.Content));
@@ -30,6 +31,9 @@ namespace Service.AutoMapper
 
             CreateMap<AddressViewModel, Address>();
             CreateMap<Address, AddressOutputViewModel>();
+
+            CreateMap<ProductViewModel, Product>();
+            CreateMap<Product, ProductOutputViewModel>();
         }
     }
 }
